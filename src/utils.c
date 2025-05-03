@@ -6,12 +6,11 @@
 /*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:27:21 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/03 20:32:05 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/03 21:07:10 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <sys/time.h>
 
 long	get_time(void)
 {
@@ -25,4 +24,29 @@ void	wait_for_start(t_philo *philo)
 {
 	while (get_time() < philo->data->start_time)
 		usleep(100);
+}
+
+void	print_lock(t_philo *philo, char *msg)
+{
+	long	timestamp;
+
+	pthread_mutex_lock(&philo->data->print_mutex);
+	if (!philo->data->someone_died)
+	{
+		timestamp = get_time() - philo->data->start_time;
+		printf("%ld %zu %s\n", timestamp, philo->id + 1, msg);
+	}
+	pthread_mutex_unlock(&philo->data->print_mutex);
+}
+const char	*get_status_msg(t_status status)
+{
+	if (status == S_EAT)
+		return ("is eating");
+	else if (status == S_THINK)
+		return ("is thinking");
+	else if (status == S_SLEEP)
+		return ("is sleeping");
+	else if (status == S_DEAD)
+		return ("died");
+	return (NULL);
 }

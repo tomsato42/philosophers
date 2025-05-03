@@ -6,12 +6,13 @@
 /*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 19:35:50 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/03 20:56:18 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/03 21:06:43 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <pthread.h>
+#include <sys/time.h>
 
 typedef enum e_status
 {
@@ -59,3 +60,6 @@ void				start_simulation(t_data *data);
 
 /*utils*/
 long				get_time(void);
+void				wait_for_start(t_philo *philo);
+void				print_lock(t_philo *philo, char *msg);
+const char			*get_status_msg(t_status status);
