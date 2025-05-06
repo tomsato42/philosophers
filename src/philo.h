@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
+/*   By: tomsato <tomsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 19:35:50 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/03 21:06:43 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/04 12:17:10 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 #include <pthread.h>
 #include <sys/time.h>
 
@@ -57,6 +58,9 @@ void				clear_data(t_data *data);
 
 /*simulation*/
 void				start_simulation(t_data *data);
+
+/*monitor*/
+void				*monitor(t_data *data);
 
 /*utils*/
 long				get_time(void);

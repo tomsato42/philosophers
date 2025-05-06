@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
+/*   By: tomsato <tomsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:27:21 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/03 21:07:10 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/04 12:16:42 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ void	print_lock(t_philo *philo, char *msg)
 	{
 		timestamp = get_time() - philo->data->start_time;
 		printf("%ld %zu %s\n", timestamp, philo->id + 1, msg);
+	}
+	if (philo->stat == S_EAT)
+	{
+		philo->data->must_eat--;
 	}
 	pthread_mutex_unlock(&philo->data->print_mutex);
 }

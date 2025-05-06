@@ -3,10 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
+/*   By: tomsato <tomsato@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 21:00:14 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/03 21:00:38 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/04 10:25:52 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "philo.h"
+
+void	*monitor(t_data *data)
+{
+	
+}
