@@ -6,7 +6,7 @@
 /*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:00:24 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/03 20:46:41 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/06 17:01:42 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	if (!(5 <= ac && ac <= 6))
 	{
-		write (2, "Error!\n", 7);
+		write(2, "Error!\n", 7);
 		return (1);
 	}
 	data = malloc(sizeof(t_data));

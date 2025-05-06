@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomsato <tomsato@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 19:35:50 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/04 12:17:10 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/06 18:09:53 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 #include <pthread.h>
+#include <stdio.h>
 #include <sys/time.h>
+#include <unistd.h>
 
 typedef enum e_status
 {
@@ -23,6 +24,8 @@ typedef enum e_status
 	S_DEAD
 }					t_status;
 
+struct	s_philo;
+
 typedef struct s_data
 {
 	int				num_philos;
@@ -31,10 +34,11 @@ typedef struct s_data
 	long			time_to_sleep;
 	int				must_eat;
 	long			start_time;
-	int				someone_died;
+	int				stop;
+	pthread_mutex_t	stop_flag;
 	pthread_mutex_t	*fork_mutexes;
 	pthread_mutex_t	print_mutex;
-	t_philo			*philos;
+	struct s_philo	*philos;
 }					t_data;
 
 typedef struct s_philo
@@ -42,6 +46,7 @@ typedef struct s_philo
 	size_t			id;
 	t_status		stat;
 	pthread_t		thread;
+	pthread_mutex_t	meal_mutex;
 	long			last_meal_time;
 	size_t			eat_count;
 	int				left_fork_id;
@@ -65,5 +70,6 @@ void				*monitor(t_data *data);
 /*utils*/
 long				get_time(void);
 void				wait_for_start(t_philo *philo);
-void				print_lock(t_philo *philo, char *msg);
+void				print_lock(t_philo *philo, const char *msg);
+int					get_stop_flag(t_data *data);
 const char			*get_status_msg(t_status status);

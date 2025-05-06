@@ -56,7 +56,7 @@ remove_comments() {
     local file_ext="${input_file##*.}"
     
     # libftディレクトリはスキップ
-    if [[ "$input_file" == *"/lib/libft/"* ]]; then
+    if [[ "$input_file" == *"/libft/"* ]]; then
         return
     fi
     

@@ -6,7 +6,7 @@ HELGRIND_FLAGS = -g
 NAME = philo
 SRC_DIR = src/
 OBJ_DIR = obj/
-LIBFT_DIR = libft/
+LIBFT_DIR = libfuture/
 LIBFT = $(LIBFT_DIR)libft.a
 
 SRC_FILES = $(SRC_DIR)main.c \

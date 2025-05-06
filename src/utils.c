@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomsato <tomsato@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:27:21 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/04 12:16:42 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/06 17:37:01 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,29 @@ long	get_time(void)
 void	wait_for_start(t_philo *philo)
 {
 	while (get_time() < philo->data->start_time)
-		usleep(100);
+		usleep(10);
 }
 
-void	print_lock(t_philo *philo, char *msg)
+void	print_lock(t_philo *philo, const char *msg)
 {
 	long	timestamp;
 
 	pthread_mutex_lock(&philo->data->print_mutex);
-	if (!philo->data->someone_died)
-	{
-		timestamp = get_time() - philo->data->start_time;
-		printf("%ld %zu %s\n", timestamp, philo->id + 1, msg);
-	}
-	if (philo->stat == S_EAT)
-	{
-		philo->data->must_eat--;
-	}
+	timestamp = get_time() - philo->data->start_time;
+	printf("%ld %zu %s\n", timestamp, philo->id + 1, msg);
 	pthread_mutex_unlock(&philo->data->print_mutex);
 }
+
+int	get_stop_flag(t_data *data)
+{
+	int	i;
+
+	pthread_mutex_lock(&data->stop_flag);
+	i = data->stop;
+	pthread_mutex_unlock(&data->stop_flag);
+	return (i);
+}
+
 const char	*get_status_msg(t_status status)
 {
 	if (status == S_EAT)
