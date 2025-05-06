@@ -6,7 +6,7 @@
 /*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:08:27 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/06 17:21:14 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/06 18:46:52 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int	init_philos(t_data *data)
 	while (i < data->num_philos)
 	{
 		data->philos[i].id = i;
-		data->philos[i].stat = S_THINK;
 		data->philos[i].last_meal_time = -1;
 		data->philos[i].eat_count = 0;
 		data->philos[i].left_fork_id = i;

@@ -6,7 +6,7 @@
 /*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 19:35:50 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/06 18:09:53 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/06 18:47:05 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct s_data
 typedef struct s_philo
 {
 	size_t			id;
-	t_status		stat;
 	pthread_t		thread;
 	pthread_mutex_t	meal_mutex;
 	long			last_meal_time;
