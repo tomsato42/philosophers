@@ -25,12 +25,6 @@ $(LIBFT):
 $(NAME): $(OBJ_FILES) $(LIBFT)
 	$(CC) $(CFLAGS) $(PTHREAD) -o $@ $^ -L$(LIBFT_DIR) -lft
 
-debug: CFLAGS += $(HELGRIND_FLAGS)
-debug: re
-
-helgrind: debug
-	valgrind --tool=helgrind ./$(NAME) $(ARGS)
-
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) $(CFLAGS) -I$(LIBFT_DIR) -c $< -o $@
 
@@ -47,4 +41,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re debug helgrind
+.PHONY: all clean fclean re

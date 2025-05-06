@@ -6,7 +6,7 @@
 /*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:27:21 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/06 17:37:01 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/06 19:14:03 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,18 @@ void	wait_for_start(t_philo *philo)
 
 void	print_lock(t_philo *philo, const char *msg)
 {
-	long	timestamp;
+	long		timestamp;
+	static int	flag = 0;
 
 	pthread_mutex_lock(&philo->data->print_mutex);
 	timestamp = get_time() - philo->data->start_time;
-	printf("%ld %zu %s\n", timestamp, philo->id + 1, msg);
+	if (!get_stop_flag(philo->data))
+		printf("%ld %zu %s\n", timestamp, philo->id + 1, msg);
+	else if (flag == 0)
+	{
+		printf("%ld %zu %s\n", timestamp, philo->id + 1, msg);
+		flag = 1;
+	}
 	pthread_mutex_unlock(&philo->data->print_mutex);
 }
 

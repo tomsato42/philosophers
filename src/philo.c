@@ -6,7 +6,7 @@
 /*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:58:39 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/06 18:46:18 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/06 19:08:14 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ void	*philo_routine(t_philo *philo)
 
 	data = philo->data;
 	wait_for_start(philo);
+	pthread_mutex_lock(&philo->meal_mutex);
+	philo->last_meal_time = data->start_time;
+	pthread_mutex_unlock(&philo->meal_mutex);
 	if (data->num_philos == 1)
 	{
 		handle_single_philo(philo);
@@ -105,6 +108,7 @@ void	start_simulation(t_data *data)
 	}
 	pthread_create(&monitor_thread, NULL, (void *(*)(void *))monitor, data);
 	pthread_join(monitor_thread, NULL);
+	i = 0;
 	while (i < data->num_philos)
 	{
 		pthread_join(data->philos[i].thread, NULL);
