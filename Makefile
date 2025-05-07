@@ -1,43 +1,32 @@
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-PTHREAD = -pthread 
-HELGRIND_FLAGS = -g
+NAME		= philo
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror
+PTHREAD		= -pthread
 
-NAME = philo
-SRC_DIR = src/
-OBJ_DIR = obj/
-LIBFT_DIR = libfuture/
-LIBFT = $(LIBFT_DIR)libft.a
+SRC_DIR		= src/
+OBJ_DIR		= obj/
 
-SRC_FILES = $(SRC_DIR)main.c \
-			$(SRC_DIR)init.c \
-			$(SRC_DIR)utils.c \
-			$(SRC_DIR)philo.c \
-			$(SRC_DIR)monitor.c
+SRC_FILES	= main.c init.c philo.c monitor.c utils.c ph_atoi.c
+OBJ_FILES	= $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
 
-OBJ_FILES = $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC_FILES))
+all: $(OBJ_DIR) $(NAME)
 
-all: $(OBJ_DIR) $(LIBFT) $(NAME)
-
-$(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
-
-$(NAME): $(OBJ_FILES) $(LIBFT)
-	$(CC) $(CFLAGS) $(PTHREAD) -o $@ $^ -L$(LIBFT_DIR) -lft
+$(NAME): $(OBJ_FILES)
+	$(CC) $(CFLAGS) $(PTHREAD) -o $@ $^
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	$(CC) $(CFLAGS) -I$(LIBFT_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 clean:
-	$(MAKE) -C $(LIBFT_DIR) clean
-	rm -rf $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR)
+	@echo "Object files cleaned"
 
 fclean: clean
-	$(MAKE) -C $(LIBFT_DIR) fclean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "Executable cleaned"
 
 re: fclean all
 

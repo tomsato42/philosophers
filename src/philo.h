@@ -6,11 +6,10 @@
 /*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 19:35:50 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/06 18:47:05 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/07 11:38:24 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include <pthread.h>
 #include <stdio.h>
 #include <sys/time.h>
@@ -72,3 +71,7 @@ void				wait_for_start(t_philo *philo);
 void				print_lock(t_philo *philo, const char *msg);
 int					get_stop_flag(t_data *data);
 const char			*get_status_msg(t_status status);
+
+/*atoi*/
+int	ft_atoi(const char *nptr);
+int	ft_atol(const char *nptr);
