@@ -6,7 +6,7 @@
 /*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 19:35:50 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/07 11:38:24 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/07 11:41:33 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,5 @@ int					get_stop_flag(t_data *data);
 const char			*get_status_msg(t_status status);
 
 /*atoi*/
-int	ft_atoi(const char *nptr);
-int	ft_atol(const char *nptr);
+int					ft_atoi(const char *nptr);
+int					ft_atol(const char *nptr);
