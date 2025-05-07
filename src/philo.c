@@ -6,7 +6,7 @@
 /*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:58:39 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/06 19:08:14 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/07 11:40:11 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void	take_forks(t_philo *philo)
 	}
 	else
 	{
+		usleep(500);
 		pthread_mutex_lock(&data->fork_mutexes[philo->left_fork_id]);
 		print_lock(philo, "has taken a fork");
 		pthread_mutex_lock(&data->fork_mutexes[philo->right_fork_id]);
