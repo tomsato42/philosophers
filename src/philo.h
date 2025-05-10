@@ -6,15 +6,15 @@
 /*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 19:35:50 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/10 14:29:27 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/10 15:28:05 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pthread.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <sys/time.h>
 #include <unistd.h>
-#include <stdlib.h>
 
 typedef enum e_status
 {
@@ -62,6 +62,7 @@ void				clear_data(t_data *data);
 
 /*simulation*/
 void				start_simulation(t_data *data);
+void				philo_think(t_philo *philo);
 
 /*monitor*/
 void				*monitor(t_data *data);

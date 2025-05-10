@@ -6,7 +6,7 @@
 /*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:58:39 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/10 14:35:34 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/10 15:13:17 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,7 @@ void	*philo_routine(t_philo *philo)
 			print_lock(philo, get_status_msg(S_SLEEP));
 			usleep(data->time_to_sleep * 1000);
 		}
-		if (!get_stop_flag(data))
-			print_lock(philo, get_status_msg(S_THINK));
+		philo_think(philo);
 		usleep(500);
 	}
 	return (NULL);

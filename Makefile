@@ -6,7 +6,7 @@ PTHREAD		= -pthread
 SRC_DIR		= src/
 OBJ_DIR		= obj/
 
-SRC_FILES	= main.c init.c philo.c monitor.c utils.c ph_atoi.c
+SRC_FILES	= main.c init.c philo.c monitor.c utils.c ph_atoi.c think.c
 OBJ_FILES	= $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
 
 all: $(OBJ_DIR) $(NAME)
