@@ -6,7 +6,7 @@
 /*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:58:39 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/07 11:40:11 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/10 14:35:34 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	philo_eat(t_philo *philo)
 	pthread_mutex_unlock(&data->fork_mutexes[philo->left_fork_id]);
 }
 
-static void	handle_single_philo(t_philo *philo)
+static void	*handle_single_philo(t_philo *philo)
 {
 	t_data	*data;
 
@@ -61,6 +61,7 @@ static void	handle_single_philo(t_philo *philo)
 	print_lock(philo, "has taken a fork");
 	usleep(data->time_to_die * 1000);
 	pthread_mutex_unlock(&data->fork_mutexes[0]);
+	return (NULL);
 }
 
 void	*philo_routine(t_philo *philo)
@@ -73,10 +74,9 @@ void	*philo_routine(t_philo *philo)
 	philo->last_meal_time = data->start_time;
 	pthread_mutex_unlock(&philo->meal_mutex);
 	if (data->num_philos == 1)
-	{
-		handle_single_philo(philo);
-		return (NULL);
-	}
+		return (handle_single_philo(philo));
+	if (!get_stop_flag(data))
+		print_lock(philo, get_status_msg(S_THINK));
 	while (!get_stop_flag(data))
 	{
 		philo_eat(philo);

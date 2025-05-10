@@ -6,7 +6,7 @@
 /*   By: tomsato <tomsato@student.42.jp>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 19:35:50 by tomsato           #+#    #+#             */
-/*   Updated: 2025/05/07 11:41:33 by tomsato          ###   ########.fr       */
+/*   Updated: 2025/05/10 14:29:27 by tomsato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <sys/time.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 typedef enum e_status
 {
