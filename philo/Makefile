@@ -3,7 +3,7 @@ CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 PTHREAD		= -pthread
 
-SRC_DIR		= src/
+SRC_DIR		= ./
 OBJ_DIR		= obj/
 
 SRC_FILES	= main.c init.c philo.c monitor.c utils.c ph_atoi.c think.c
